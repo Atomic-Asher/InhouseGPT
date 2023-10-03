@@ -25,7 +25,7 @@ export const ChatUI: FC<Prop> = (props) => {
   const { id } = useParams();
   const { data: session } = useSession();
   const [chatBody, setBody] = useState<PromptGPTBody>({
-    id: id,
+    id: id.toString(),
     model: "GPT-3.5",
   });
 
@@ -39,7 +39,7 @@ export const ChatUI: FC<Prop> = (props) => {
     isLoading,
   } = useChat({
     onError,
-    id,
+    id: id.toString(),
     body: chatBody,
     initialMessages: transformCosmosToAIModel(props.chats),
   });
